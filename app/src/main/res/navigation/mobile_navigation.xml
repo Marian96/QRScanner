@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    android:label="@string/my"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.marianpusk.qrscanner.ui.main.home.MainFragment"
+        android:label="Scan QR Code">
+        <action
+            android:id="@+id/action_mainFragment_to_scannerFragment"
+            app:destination="@id/scannerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scannerFragment"
+        android:name="com.marianpusk.qrscanner.ui.main.scanner.ScannerFragment"
+        android:label="scanner_fragment"
+        tools:layout="@layout/scanner_fragment">
+        <action
+            android:id="@+id/action_scannerFragment_to_mainFragment"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_generate_code"
+        android:name="com.marianpusk.qrscanner.ui.main.GenerateQRFragment"
+        android:label="@string/generate"
+        tools:layout="@layout/fragment_generate_q_r" />
+    <fragment
+        android:id="@+id/nav_my_codes"
+        android:name="com.marianpusk.qrscanner.ui.main.MyCodesFragment"
+        android:label="fragment_my_codes"
+        tools:layout="@layout/fragment_my_codes" />
+</navigation>

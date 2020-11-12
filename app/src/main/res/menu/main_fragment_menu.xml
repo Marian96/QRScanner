@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/deleteAll"
+        android:title="@string/DeleteAllItems" />
+
+    <item
+        android:id="@+id/delete"
+        android:title="@string/deleteItem" />
+
+    <item
+        android:id="@+id/share_item"
+        android:title="share"
+        android:icon="@drawable/share"
+        app:showAsAction="always"
+        />
+</menu>
