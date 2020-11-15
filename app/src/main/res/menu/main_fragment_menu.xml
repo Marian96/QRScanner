@@ -5,17 +5,15 @@
 
 
     <item
-        android:id="@+id/deleteAll"
-        android:title="@string/DeleteAllItems" />
-
-    <item
-        android:id="@+id/delete"
-        android:title="@string/deleteItem" />
-
-    <item
         android:id="@+id/share_item"
         android:title="share"
         android:icon="@drawable/share"
         app:showAsAction="always"
         />
+
+    <item
+        android:id="@+id/deleteAll"
+        android:title="@string/DeleteAllItems"
+        android:icon="@drawable/ic_baseline_delete_24"
+        app:showAsAction="always"/>
 </menu>

@@ -125,7 +125,7 @@ class MainViewModel(
         val sharingIntent = Intent(Intent.ACTION_SEND)
         sharingIntent.addFlags(FLAG_GRANT_WRITE_URI_PERMISSION)
         sharingIntent.addFlags(FLAG_GRANT_READ_URI_PERMISSION)
-        sharingIntent.type = "*/*"
+        sharingIntent.type = "text/csv"
         sharingIntent.putExtra(
             Intent.EXTRA_STREAM,
             path
@@ -153,6 +153,21 @@ class MainViewModel(
         }
 
     }
+
+    fun shareSingle(activity: FragmentActivity?,code: String){
+        uiScope.launch {
+            withContext(Dispatchers.IO){
+
+                val sharingIntent = Intent(Intent.ACTION_SEND)
+                sharingIntent.type = "text/plain"
+                sharingIntent.putExtra(Intent.EXTRA_TEXT,code)
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "QR code")
+                activity!!.startActivity(Intent.createChooser(sharingIntent,"share QR Code"))
+            }
+        }
+    }
+
+
 
     override fun onCleared() {
         super.onCleared()

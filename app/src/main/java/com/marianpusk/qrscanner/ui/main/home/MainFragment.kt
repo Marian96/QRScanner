@@ -28,7 +28,6 @@ class MainFragment : Fragment() {
 
         val binding = DataBindingUtil.inflate<MainFragmentBinding>(inflater, R.layout.main_fragment, container, false)
         val application = requireNotNull(this.activity).application
-//        binding.recycleView.setBackgroundColor(Color.WHITE)
 
         val dataSource = QRCodesDatabase.getInstance(application).qrcodeDatabase
         val viewModelFactory = MainViewModelFactory(dataSource,application)
@@ -40,7 +39,7 @@ class MainFragment : Fragment() {
 
         val add = binding.add
         add.setOnClickListener{
-            this.findNavController().navigate(R.id.action_mainFragment_to_scannerFragment)
+            this.findNavController().navigate(R.id.action_nav_home_to_scannerFragment)
 //            var code1 = QRCodeEntity()
 //            var code2 = QRCodeEntity()
 //            code1.value = "abcdeafgh"
@@ -50,7 +49,8 @@ class MainFragment : Fragment() {
         }
 
         val qrcodeAdapter = QRCodeRecycleAdapter(QRCodeListener {
-            id ->
+            value, id ->
+            this.findNavController().navigate(MainFragmentDirections.actionNavHomeToCodeDetailFragment2(value,id))
         },DeleteCodeListener{
             id -> viewModel.onDelete(id)
         })
@@ -84,7 +84,6 @@ class MainFragment : Fragment() {
 
             R.id.share_item -> showShareDialog()
             R.id.deleteAll -> viewModel.clear()
-            R.id.delete -> image.visibility - View.VISIBLE
         }
 
         if(item.itemId == R.id.share_item){

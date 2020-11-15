@@ -7,30 +7,72 @@
     app:startDestination="@id/nav_home">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.marianpusk.qrscanner.ui.main.home.MainFragment"
-        android:label="Scan QR Code">
-        <action
-            android:id="@+id/action_mainFragment_to_scannerFragment"
-            app:destination="@id/scannerFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/scannerFragment"
         android:name="com.marianpusk.qrscanner.ui.main.scanner.ScannerFragment"
-        android:label="scanner_fragment"
+        android:label="Scan"
         tools:layout="@layout/scanner_fragment">
         <action
-            android:id="@+id/action_scannerFragment_to_mainFragment"
+            android:id="@+id/action_scannerFragment_to_nav_home"
             app:destination="@id/nav_home" />
     </fragment>
     <fragment
         android:id="@+id/nav_generate_code"
-        android:name="com.marianpusk.qrscanner.ui.main.GenerateQRFragment"
+        android:name="com.marianpusk.qrscanner.ui.main.generatecodes.GenerateQRFragment"
         android:label="@string/generate"
-        tools:layout="@layout/fragment_generate_q_r" />
+        tools:layout="@layout/fragment_generate_q_r" >
+        <action
+            android:id="@+id/action_nav_generate_code_to_nav_my_codes"
+            app:destination="@id/nav_my_codes" />
+    </fragment>
     <fragment
         android:id="@+id/nav_my_codes"
-        android:name="com.marianpusk.qrscanner.ui.main.MyCodesFragment"
-        android:label="fragment_my_codes"
-        tools:layout="@layout/fragment_my_codes" />
+        android:name="com.marianpusk.qrscanner.ui.main.generatecodes.MyCodesFragment"
+        android:label="My QR Codes"
+        tools:layout="@layout/fragment_my_codes">
+        <action
+            android:id="@+id/action_nav_my_codes_to_generatedCodeFragment"
+            app:destination="@id/generatedCodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/codeDetailFragment"
+        android:name="com.marianpusk.qrscanner.ui.main.codedetail.CodeDetailFragment"
+        android:label="QR Code Detail">
+        <argument
+            android:name="codeValue"
+            app:argType="string" />
+        <argument
+            android:name="codeId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_codeDetailFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.marianpusk.qrscanner.ui.main.home.MainFragment"
+        android:label="Home">
+        <action
+            android:id="@+id/action_nav_home_to_scannerFragment"
+            app:destination="@id/scannerFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_codeDetailFragment2"
+            app:destination="@id/codeDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/generatedCodeFragment"
+        android:name="com.marianpusk.qrscanner.ui.main.generatecodes.GeneratedCodeFragment"
+        android:label="Generated QR Code"
+        tools:layout="@layout/fragment_generated_code">
+        <argument
+            android:name="codeValue"
+            app:argType="string" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/myCodeDetailFragment"
+        android:name="com.marianpusk.qrscanner.ui.main.generatecodes.MyCodeDetailFragment"
+        android:label="fragment_my_code_detail"
+        tools:layout="@layout/fragment_my_code_detail" />
 </navigation>

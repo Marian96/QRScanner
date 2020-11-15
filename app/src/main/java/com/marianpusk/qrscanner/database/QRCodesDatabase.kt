@@ -4,14 +4,17 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.marianpusk.qrscanner.database.daos.GeneratedCodeDao
 import com.marianpusk.qrscanner.database.daos.QRCodesDao
+import com.marianpusk.qrscanner.database.entities.GeneratedCodeEntity
 import com.marianpusk.qrscanner.database.entities.QRCodeEntity
 
-@Database(entities = [QRCodeEntity::class],version = 1,exportSchema = false)
+@Database(entities = [QRCodeEntity::class,GeneratedCodeEntity::class],version = 3,exportSchema = false)
 
 abstract class QRCodesDatabase: RoomDatabase(){
 
     abstract val qrcodeDatabase: QRCodesDao
+    abstract val generatedCodes: GeneratedCodeDao
 
     companion object {
 

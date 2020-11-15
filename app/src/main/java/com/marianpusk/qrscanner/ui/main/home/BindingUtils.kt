@@ -4,6 +4,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.marianpusk.qrscanner.R
+import com.marianpusk.qrscanner.database.entities.GeneratedCodeEntity
 import com.marianpusk.qrscanner.database.entities.QRCodeEntity
 import org.w3c.dom.Text
 import java.text.SimpleDateFormat
@@ -39,6 +40,21 @@ fun convertLongToTime(time: Long): String {
 
 @BindingAdapter("arrow")
 fun ImageView.setArrowImage(item: QRCodeEntity?){
+    item?.let{
+        setImageResource(R.drawable.arrow_right)
+    }
+
+}
+
+@BindingAdapter("newCode")
+fun TextView.setCodeValue(item: GeneratedCodeEntity?) {
+    item?.let {
+        text = item.value
+    }
+}
+
+@BindingAdapter("newArrow")
+fun ImageView.setArrowImage(item: GeneratedCodeEntity?){
     item?.let{
         setImageResource(R.drawable.arrow_right)
     }

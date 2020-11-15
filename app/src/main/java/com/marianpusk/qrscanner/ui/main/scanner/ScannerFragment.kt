@@ -72,7 +72,7 @@ class ScannerFragment : Fragment() {
 
                 viewModel.insertQRCode(qrCode)
 
-                this.findNavController().navigate(R.id.action_scannerFragment_to_mainFragment)
+                this.findNavController().navigate(R.id.action_scannerFragment_to_nav_home)
             }
         }
         scannerView.setOnClickListener {

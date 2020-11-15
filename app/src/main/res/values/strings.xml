@@ -10,6 +10,7 @@
     <string name="nav_header_title">QR Scanner</string>
     <string name="nav_header_subtitle">marianpuskas96@gmail.com</string>
     <string name="home">Home</string>
+    <string name="save">Save</string>
 
     <string name="open">Open</string>
     <string name="close">Close</string>
